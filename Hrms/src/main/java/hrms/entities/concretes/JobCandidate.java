@@ -4,7 +4,6 @@ import java.time.LocalDate;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import hrms.core.entities.User;
 import lombok.*;
@@ -30,7 +29,7 @@ public class JobCandidate{
 	
 	@Column(name = "identification_no")
 	private String identificationNo;
-
+ 
 	@Column(name = "first_name")
 	private String firstName;
 
