@@ -1,0 +1,50 @@
+package hrms.bussiness.concretes;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+
+import hrms.bussiness.abstracts.UserService;
+import hrms.core.entities.User;
+import hrms.core.results.DataResult;
+import hrms.core.results.ErrorDataResult;
+
+import hrms.core.results.Result;
+import hrms.core.results.SuccessDataResult;
+import hrms.core.results.SuccessResult;
+
+import hrms.dataAccess.abstracts.UserDao;
+
+
+@Service
+public class UserManager implements UserService {
+
+	
+	private UserDao userDao;
+
+
+	@Autowired
+	public UserManager(UserDao userDao) {
+
+		this.userDao = userDao;
+		
+	}
+
+	@Override
+	public DataResult<User> getByEmail(String email) {
+
+		var result = this.userDao.findByEmail(email);
+		if(result!=null) {
+			return new ErrorDataResult<>("Bulunamadı");
+		}
+		return new SuccessDataResult<>(result,"getirildi");
+	}
+
+	@Override
+	public Result add(User user) {
+		
+		this.userDao.save(user);
+		return new SuccessResult();
+	}
+
+}
