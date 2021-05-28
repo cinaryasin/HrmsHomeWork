@@ -26,7 +26,7 @@ public class JobCandidate{
 	@Column(name = "id")
 	private Integer id;
 
-	
+	 
 	@Column(name = "identification_no")
 	private String identificationNo;
  
