@@ -3,10 +3,12 @@ package hrms.core.entities;
 
 import javax.persistence.*;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+
 
 @EqualsAndHashCode(callSuper = false)
 @Data
@@ -22,8 +24,10 @@ public class User {
 	private int id;
 	@Column(name = "email")
 	private String email;
+	
 	@Column(name = "password")
 	private String password;
+	
 	@Column(name = "status")
 	private boolean status;
 

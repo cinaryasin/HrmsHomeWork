@@ -4,7 +4,6 @@ import java.time.LocalDate;
 
 import javax.persistence.*;
 
-
 import hrms.core.entities.User;
 import lombok.*;
 
@@ -26,7 +25,7 @@ public class JobCandidate{
 	@Column(name = "id")
 	private Integer id;
 
-	 
+
 	@Column(name = "identification_no")
 	private String identificationNo;
  
