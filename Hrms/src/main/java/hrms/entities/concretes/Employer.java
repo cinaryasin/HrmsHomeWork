@@ -1,30 +1,24 @@
 package hrms.entities.concretes;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 import javax.persistence.*;
 
 import hrms.core.entities.User;
+import lombok.AllArgsConstructor;
 import lombok.Data;
-
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+@EqualsAndHashCode(callSuper = false)
 @Data
-
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "employers")
-public class Employer {
+public class Employer extends User{
 
-	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
-    private User user;
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private int id;
-
+	
 
 	@Column(name = "company_name")
 	private String companyName;
@@ -36,7 +30,7 @@ public class Employer {
 	private String phoneNumber;
 
 	@Column(name = "create_date")
-	private Date createDate;
+	private LocalDate createDate;
 
 	@Column(name = "search_status")
 	private boolean searchStatus;

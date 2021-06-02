@@ -8,7 +8,6 @@ import hrms.bussiness.abstracts.UserService;
 import hrms.core.entities.User;
 import hrms.core.results.DataResult;
 import hrms.core.results.ErrorDataResult;
-
 import hrms.core.results.Result;
 import hrms.core.results.SuccessDataResult;
 import hrms.core.results.SuccessResult;
@@ -33,6 +32,7 @@ public class UserManager implements UserService {
 	@Override
 	public DataResult<User> getByEmail(String email) {
 
+		
 		var result = this.userDao.findByEmail(email);
 		if(result!=null) {
 			return new ErrorDataResult<>("Bulunamadı");
@@ -40,6 +40,7 @@ public class UserManager implements UserService {
 		return new SuccessDataResult<>(result,"getirildi");
 	}
 
+	
 	@Override
 	public Result add(User user) {
 		

@@ -3,6 +3,10 @@ package hrms.entities.concretes;
 import java.time.LocalDate;
 
 import javax.persistence.*;
+import javax.validation.constraints.FutureOrPresent;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.PastOrPresent;
+import javax.validation.constraints.Size;
 
 import hrms.core.entities.User;
 import lombok.*;
@@ -11,24 +15,17 @@ import lombok.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Inheritance(strategy = InheritanceType.JOINED)
 @Entity
 @Table(name = "job_candidates")
-public class JobCandidate{
+public class JobCandidate extends User{
 
-	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
-    private User user;
+	
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private Integer id;
-
-
+	@Size(min = 11,max = 11,message = "11 karakterli olmalıdır")
+	@NotEmpty(message = "kimlik numarası boş olamaz")
 	@Column(name = "identification_no")
 	private String identificationNo;
- 
+
 	@Column(name = "first_name")
 	private String firstName;
 
@@ -38,14 +35,15 @@ public class JobCandidate{
 	@Column(name = "phone_number")
 	private String phoneNumber;
 
+	@PastOrPresent(message="doğum tarihi bugünden önce olmalıdır")
 	@Column(name = "birth_date")
 	private LocalDate birthDate;
 
+	@FutureOrPresent(message="oluşturulma tarihi bugünden önce olamaz")
 	@Column(name = "create_date")
 	private LocalDate createDate;
 
 	@Column(name = "search_status")
 	private boolean searchStatus;
-	
-	
+
 }

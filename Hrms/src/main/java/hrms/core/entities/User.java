@@ -2,16 +2,17 @@ package hrms.core.entities;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 
-@EqualsAndHashCode(callSuper = false)
 @Data
+@Inheritance(strategy = InheritanceType.JOINED)
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -22,6 +23,9 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private int id;
+	
+	@Email(message="email formatına uygun değil")
+	@NotEmpty(message="email boş olamaz")
 	@Column(name = "email")
 	private String email;
 	
