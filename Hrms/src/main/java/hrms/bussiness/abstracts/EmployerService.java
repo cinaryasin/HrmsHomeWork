@@ -10,6 +10,6 @@ public interface EmployerService {
 
 	Result add(Employer employer);
     Result update(Employer employer);
-    DataResult<Employer> getById(int userId);
-    DataResult<List<Employer>> getAll();
+    DataResult<Employer> findById(int userId);
+    DataResult<List<Employer>> findAll();
 }

@@ -10,7 +10,7 @@ public interface JobCandidateService {
 
 	Result add(JobCandidate jobCandidate);
     Result update(JobCandidate jobCandidate);
-    DataResult<JobCandidate> getById(int userId);
-    DataResult<List<JobCandidate>> getAll();
+    DataResult<JobCandidate> findById(int userId);
+    DataResult<List<JobCandidate>> findAll();
 	
 }

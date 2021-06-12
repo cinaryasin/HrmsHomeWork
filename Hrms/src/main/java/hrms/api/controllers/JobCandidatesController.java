@@ -53,12 +53,12 @@ private JobCandidateService candidateService;
 	
 	@PostMapping("/getById")
 	public DataResult<JobCandidate> getById(@RequestBody int userId){
-		return this.candidateService.getById(userId);
+		return this.candidateService.findById(userId);
 	}
 	
 	@GetMapping("/getAll")
 	public DataResult<List<JobCandidate>> getAll(){
-		return this.candidateService.getAll();
+		return this.candidateService.findAll();
 	}
 	
 	

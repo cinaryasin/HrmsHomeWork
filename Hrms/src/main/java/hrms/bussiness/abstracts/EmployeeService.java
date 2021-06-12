@@ -9,6 +9,6 @@ import hrms.entities.concretes.Employee;
 public interface EmployeeService {
 	Result add(Employee employee);
     Result update(Employee employee);
-    DataResult<Employee> getById(int userId);
-    DataResult<List<Employee>> getAll();
+    DataResult<Employee> findById(int userId);
+    DataResult<List<Employee>> findAll();
 }

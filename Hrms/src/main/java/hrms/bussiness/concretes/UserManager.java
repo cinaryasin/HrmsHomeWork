@@ -1,5 +1,8 @@
 package hrms.bussiness.concretes;
 
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,18 +31,6 @@ public class UserManager implements UserService {
 		this.userDao = userDao;
 		
 	}
-
-	@Override
-	public DataResult<User> getByEmail(String email) {
-
-		
-		var result = this.userDao.findByEmail(email);
-		if(result!=null) {
-			return new ErrorDataResult<>("Bulunamadı");
-		}
-		return new SuccessDataResult<>(result,"getirildi");
-	}
-
 	
 	@Override
 	public Result add(User user) {
@@ -47,5 +38,34 @@ public class UserManager implements UserService {
 		this.userDao.save(user);
 		return new SuccessResult();
 	}
+
+	@Override
+	public DataResult<User> findByEmail(String email) {
+
+		var result = userDao.findByEmail(email);
+		
+		return new SuccessDataResult<User>(result,"getirildi");
+		
+	}
+	@Override
+	public DataResult<User> findById(int id) {
+
+		
+		var result = this.userDao.findById(id);
+		if(result==null) {
+			return new ErrorDataResult<>("Bulunamadı");
+		}
+		
+		return new SuccessDataResult<>(result,"getirildi");
+		
+	}
+
+	@Override
+	public DataResult<List<User>> findAll() {
+		var result = userDao.findAll();
+		return new SuccessDataResult<>(result,"Data Listelendi");
+	}
+	
+	
 
 }

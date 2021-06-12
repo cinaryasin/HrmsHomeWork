@@ -26,7 +26,7 @@ public class User {
 	
 	@Email(message="email formatına uygun değil")
 	@NotEmpty(message="email boş olamaz")
-	@Column(name = "email")
+	@Column(name = "email", unique = true)
 	private String email;
 	
 	@Column(name = "password")

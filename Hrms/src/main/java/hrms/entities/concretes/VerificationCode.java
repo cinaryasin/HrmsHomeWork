@@ -1,6 +1,6 @@
 package hrms.entities.concretes;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 import javax.persistence.*;
 
@@ -23,7 +23,7 @@ public class VerificationCode {
 	@Column(name="code")
 	private String code;
 	@Column(name="create_date")
-	private Date createDate;
+	private LocalDate createDate = LocalDate.now();
 	@Column(name="is_verifed")
 	private boolean isVerifed;
 	

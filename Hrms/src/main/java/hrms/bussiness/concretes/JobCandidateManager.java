@@ -45,9 +45,14 @@ public class JobCandidateManager implements JobCandidateService {
 	}
 
 
+	@Override
+	public DataResult<List<JobCandidate>> findAll() {
+		var result = jobCandidateDao.findAll();
+		return new SuccessDataResult<>(result,"Data Listelendi");
+	}
 
 	@Override
-	public DataResult<JobCandidate> getById(int userId) {
+	public DataResult<JobCandidate> findById(int userId) {
 		var result = jobCandidateDao.findById(userId);
 		if (result == null) {
 			return new ErrorDataResult<>("kullanıcı bulunamadı");
@@ -57,10 +62,6 @@ public class JobCandidateManager implements JobCandidateService {
 
 
 
-	@Override
-	public DataResult<List<JobCandidate>> getAll() {
-		var result = jobCandidateDao.findAll();
-		return new SuccessDataResult<>(result,"Data Listelendi");
-	}
+	
 
 }

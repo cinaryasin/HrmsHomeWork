@@ -39,18 +39,21 @@ public class EmployerManager implements EmployerService{
 	}
 
 	@Override
-	public DataResult<Employer> getById(int userId) {
+	public DataResult<Employer> findById(int userId) {
 		var result = employerDao.findById(userId);
-		if (result != null) {
-			return new ErrorDataResult<>("kullanıcı bulunamadı");
+		if (result == null) {
+			return new ErrorDataResult<>("İşveren bulunamadı");
 		}
-		return new SuccessDataResult<>(result,"kullanıcı listelendi");
+		return new SuccessDataResult<>(result,"İşveren listelendi");
 	}
 
 	@Override
-	public DataResult<List<Employer>> getAll() {
+	public DataResult<List<Employer>> findAll() {
 		var result = employerDao.findAll();
-		return new SuccessDataResult<>(result, "Data Listelendi");
+		if (result==null) {
+			return new ErrorDataResult<>("İşverenler bulunamadı");
+		}
+		return new SuccessDataResult<>(result, "İşverenler Listelendi");
 	}
 
 }
