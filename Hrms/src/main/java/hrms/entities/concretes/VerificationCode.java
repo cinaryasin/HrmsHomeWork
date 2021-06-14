@@ -18,13 +18,22 @@ public class VerificationCode {
 	@GeneratedValue(strategy =GenerationType.IDENTITY )
 	@Column(name="id")
 	private int id;
-	@Column(name="user_id")
+
+	
 	private int userId;
 	@Column(name="code")
 	private String code;
 	@Column(name="create_date")
 	private LocalDate createDate = LocalDate.now();
-	@Column(name="is_verifed")
-	private boolean isVerifed;
+	@Column(name="is_active")
+	private boolean isActive;
+	@Column(name="is_delete")
+	private boolean isDelete;
+	@Column(name="confirmed_date")
+	private LocalDate confirmedDate;
+	@Column(name="expired_date")
+	private LocalDate expiredDate;
+	
+	
 	
 }

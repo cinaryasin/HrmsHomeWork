@@ -3,6 +3,8 @@ package hrms.entities.concretes;
 import java.sql.Date;
 
 import javax.persistence.*;
+import javax.validation.constraints.FutureOrPresent;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

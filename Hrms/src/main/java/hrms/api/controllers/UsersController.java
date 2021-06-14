@@ -15,7 +15,6 @@ import hrms.core.entities.User;
 import hrms.core.results.DataResult;
 import hrms.core.results.ErrorDataResult;
 import hrms.core.results.Result;
-import hrms.entities.concretes.JobCandidate;
 
 @RestController
 @RequestMapping("/api/users")
@@ -41,6 +40,12 @@ private UserService userService;
 	@PostMapping("/findById")
 	public DataResult<User> findById(@RequestBody int id){
 		return this.userService.findById(id);
+	}
+	
+	
+	@GetMapping("/findByEmail")
+	public DataResult<User> findByEmail(@RequestParam String email){
+		return this.userService.findByEmail(email);
 	}
 	
 	

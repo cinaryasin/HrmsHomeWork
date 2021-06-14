@@ -13,9 +13,11 @@ import hrms.core.results.DataResult;
 import hrms.core.results.ErrorDataResult;
 import hrms.core.results.Result;
 import hrms.core.results.SuccessDataResult;
+
 import hrms.entities.concretes.Employee;
 import hrms.entities.concretes.Employer;
 import hrms.entities.concretes.JobCandidate;
+
 import hrms.entities.dtos.UserForLoginDto;
 
 @Service
@@ -26,6 +28,8 @@ public class AuthManager implements AuthService {
 	private JobCandidateService jobCandidateService;
 	private UserService userService;
 
+
+
 	@Autowired
 	public AuthManager(EmployeeService employeeService, EmployerService employerService,
 			JobCandidateService jobCandidateService, UserService userService) {
@@ -34,11 +38,13 @@ public class AuthManager implements AuthService {
 		this.employerService = employerService;
 		this.jobCandidateService = jobCandidateService;
 		this.userService = userService;
+		
 
 	}
 
 	@Override
 	public DataResult<Employee> employeeRegister(Employee employee) {
+		
 		employeeService.add(employee);
 		return new SuccessDataResult<Employee>(employee, "Kayıt gerçekleşti");
 	}
@@ -74,6 +80,7 @@ public class AuthManager implements AuthService {
 		return null;
 	}
 
+	
 	
 
 }
