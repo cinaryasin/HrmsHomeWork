@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import hrms.bussiness.abstracts.EmployeeService;
 import hrms.core.results.DataResult;
 import hrms.core.results.ErrorDataResult;
+import hrms.core.results.ErrorResult;
 import hrms.core.results.Result;
 import hrms.core.results.SuccessDataResult;
 import hrms.core.results.SuccessResult;
@@ -28,6 +29,12 @@ public class EmployeeManager implements EmployeeService{
 	
 	@Override
 	public Result add(Employee employee) {
+		
+		if(!this.checkIfEmailExists(employee.getEmail())) {
+			return new ErrorResult("Email already exist... ");
+		}
+	
+		
 		employeeDao.save(employee);
 		return new SuccessResult();
 	}
@@ -55,5 +62,17 @@ public class EmployeeManager implements EmployeeService{
 		}
 		return new SuccessDataResult<>(result,"Sistem çalışanları listelendi");
 	}
+	
+	
+	private boolean checkIfEmailExists(String email) {
+		if(this.employeeDao.findByEmail(email) !=null) {
+			return false;
+		}
+		return true;
+		
+	}
+	
+
+	
 
 }

@@ -6,5 +6,6 @@ import hrms.entities.concretes.VerificationCode;
 
 public interface VerificationCodeDao extends JpaRepository<VerificationCode,Integer>{
 
+	VerificationCode findByUserIdAndCode(int userId, String code);
 
 }

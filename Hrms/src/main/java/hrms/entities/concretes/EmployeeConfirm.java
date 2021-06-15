@@ -3,8 +3,6 @@ package hrms.entities.concretes;
 import java.sql.Date;
 
 import javax.persistence.*;
-import javax.validation.constraints.FutureOrPresent;
-
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -26,7 +24,7 @@ public class EmployeeConfirm {
 	private int employerId;
 	
 	@Column(name="is_confirmed")
-	private boolean isConfirmed;
+	private Boolean isConfirmed;
 	
 	@Column(name="confirmed_date")
 	private Date confirmedDate;

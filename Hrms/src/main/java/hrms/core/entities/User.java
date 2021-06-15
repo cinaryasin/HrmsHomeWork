@@ -33,7 +33,7 @@ public class User {
 	private String password;
 	
 	@Column(name = "status")
-	private boolean status;
+	private Boolean status;
 
 	
 

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import hrms.bussiness.abstracts.EmployerService;
 import hrms.core.results.DataResult;
 import hrms.core.results.ErrorDataResult;
+import hrms.core.results.ErrorResult;
 import hrms.core.results.Result;
 import hrms.core.results.SuccessDataResult;
 import hrms.core.results.SuccessResult;
@@ -28,6 +29,16 @@ public class EmployerManager implements EmployerService{
 	
 	@Override
 	public Result add(Employer employer) {
+		if(!this.checkIfEmailExists(employer.getEmail())) {
+			return new ErrorResult("Email already exist... ");
+		}
+	
+		if(!this.checkIfEqualEmailAndDomain(employer.getEmail(),employer.getWebAddress())) {
+			return new ErrorResult("Invalid mail adress...");
+	}
+		
+		
+		
 		employerDao.save(employer);
 		return new SuccessResult("Eklendi");
 	}
@@ -54,6 +65,27 @@ public class EmployerManager implements EmployerService{
 			return new ErrorDataResult<>("İşverenler bulunamadı");
 		}
 		return new SuccessDataResult<>(result, "İşverenler Listelendi");
+	}
+	
+	private boolean checkIfEmailExists(String email) {
+		if(this.employerDao.findByEmail(email) !=null) {
+			return false;
+		}
+		return true;
+		
+	}
+	
+
+	private boolean checkIfEqualEmailAndDomain(String email, String website) {
+		String[] emailArr = email.split("@", 2);
+		String domain = website.substring(4, website.length());
+
+		if (emailArr[1].equals(domain)) {
+
+			return true;
+		}
+
+		return false;
 	}
 
 }

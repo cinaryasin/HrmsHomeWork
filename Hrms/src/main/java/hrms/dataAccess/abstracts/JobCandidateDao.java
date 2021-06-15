@@ -7,4 +7,6 @@ import hrms.entities.concretes.JobCandidate;
 public interface JobCandidateDao extends JpaRepository<JobCandidate,Integer>{
 
 	JobCandidate findById(int userId);
+	JobCandidate findByEmail(String email);
+	JobCandidate findByIdentificationNo(String identificationNo);
 }

@@ -4,6 +4,8 @@ import java.time.LocalDate;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import hrms.core.entities.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,6 +13,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @EqualsAndHashCode(callSuper = false)
+@PrimaryKeyJoinColumn(name="id",referencedColumnName = "id")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -30,10 +33,18 @@ public class Employer extends User{
 	private String phoneNumber;
 
 	@Column(name = "create_date")
-	private LocalDate createDate = LocalDate.now();
+	private LocalDate createDate;
 
 	@Column(name = "search_status")
-	private boolean searchStatus;
+	private Boolean searchStatus;
 
+	@JsonIgnore
+    @Column(name="is_email_verified",columnDefinition = "boolean default false")
+	private Boolean isEmailVerified;
+    
+
+	@JsonIgnore
+    @Column(name="is_verified_by_emlopyee",columnDefinition = "boolean default false")
+	private Boolean isVerifiedByEmlopyee;
 	
 }

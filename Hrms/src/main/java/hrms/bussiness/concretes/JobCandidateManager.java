@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import hrms.bussiness.abstracts.JobCandidateService;
 import hrms.core.results.DataResult;
 import hrms.core.results.ErrorDataResult;
+import hrms.core.results.ErrorResult;
 import hrms.core.results.Result;
 import hrms.core.results.SuccessDataResult;
 import hrms.core.results.SuccessResult;
@@ -32,6 +33,15 @@ public class JobCandidateManager implements JobCandidateService {
 	@Override
 	public Result add(JobCandidate jobCandidate) {
 
+		
+		if(!checkIfEmailExists(jobCandidate.getEmail())) {    
+			return new ErrorResult("Email already exist...");
+		}
+		if(!checkIfNationalityId(jobCandidate.getIdentificationNo())) {
+			return new ErrorResult("Nationality already exist...");
+		}
+		
+		
 		jobCandidateDao.save(jobCandidate);
 		return new SuccessResult("Eklendi");
 	}
@@ -62,6 +72,22 @@ public class JobCandidateManager implements JobCandidateService {
 
 
 
+	private boolean checkIfEmailExists(String email) {
+		if(this.jobCandidateDao.findByEmail(email) !=null) {
+			return false;
+		}
+		return true;
+		
+	}
+	
+	private boolean checkIfNationalityId(String nationalityId) {
+		if(this.jobCandidateDao.findByIdentificationNo(nationalityId)!=null) {
+			return false;
+		}
+		return true;
+	}
+	
+	
 	
 
 }

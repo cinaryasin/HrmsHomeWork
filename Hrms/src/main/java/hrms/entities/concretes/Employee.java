@@ -25,7 +25,7 @@ public class Employee extends User {
 	private LocalDate createDate = LocalDate.now();
 
 	@Column(name = "is_active")
-	private boolean isActive;
+	private Boolean isActive;
 
 //	@OneToMany(cascade = CascadeType.ALL)
 //	@JoinTable(name="users", joinColumns = {@JoinColumn(name= "user_id")}, 

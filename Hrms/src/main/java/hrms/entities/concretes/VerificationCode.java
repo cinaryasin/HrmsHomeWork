@@ -4,7 +4,6 @@ import java.time.LocalDate;
 
 import javax.persistence.*;
 
-
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -24,15 +23,22 @@ public class VerificationCode {
 	@Column(name="code")
 	private String code;
 	@Column(name="create_date")
-	private LocalDate createDate = LocalDate.now();
-	@Column(name="is_active")
-	private boolean isActive;
+	private LocalDate createDate;
+	@Column(name="is_active", columnDefinition = "boolean default false") 
+	private Boolean isActive;
 	@Column(name="is_delete")
-	private boolean isDelete;
+	private Boolean isDelete;
 	@Column(name="confirmed_date")
 	private LocalDate confirmedDate;
 	@Column(name="expired_date")
 	private LocalDate expiredDate;
+	
+	public VerificationCode(int userId, String code, LocalDate expiredDate) {
+		super();
+		this.userId = userId;
+		this.code = code;
+		this.expiredDate = expiredDate;
+	}
 	
 	
 	

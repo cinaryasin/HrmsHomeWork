@@ -14,9 +14,6 @@ public interface UserDao extends JpaRepository<User,Integer>{
 	
 	User findById(int id);
 	
-	
-	
-	
 	User findByEmail(String email);
 	
 	@Query("Select new hrms.entities.dtos.UserForLoginDto"
