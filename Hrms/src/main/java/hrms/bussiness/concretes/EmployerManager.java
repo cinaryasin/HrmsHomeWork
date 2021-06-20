@@ -14,6 +14,7 @@ import hrms.core.results.SuccessDataResult;
 import hrms.core.results.SuccessResult;
 import hrms.dataAccess.abstracts.EmployerDao;
 import hrms.entities.concretes.Employer;
+import lombok.var;
 
 @Service
 public class EmployerManager implements EmployerService{
@@ -38,7 +39,7 @@ public class EmployerManager implements EmployerService{
 	}
 		
 		
-		
+		employer.setIsEmailVerified(false);
 		employerDao.save(employer);
 		return new SuccessResult("Eklendi");
 	}

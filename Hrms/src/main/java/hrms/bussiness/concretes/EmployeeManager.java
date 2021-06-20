@@ -14,6 +14,7 @@ import hrms.core.results.SuccessDataResult;
 import hrms.core.results.SuccessResult;
 import hrms.dataAccess.abstracts.EmployeeDao;
 import hrms.entities.concretes.Employee;
+import lombok.var;
 
 @Service
 public class EmployeeManager implements EmployeeService{
@@ -34,7 +35,6 @@ public class EmployeeManager implements EmployeeService{
 			return new ErrorResult("Email already exist... ");
 		}
 	
-		
 		employeeDao.save(employee);
 		return new SuccessResult();
 	}

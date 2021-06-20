@@ -87,7 +87,14 @@
 			<version>1.29.0</version>
 		</dependency>
 
+		<dependency>
+			<groupId>com.aryaemini.nvi</groupId>
+			<artifactId>tckno-validator</artifactId>
+			<version>1.4</version>
+		</dependency>
+
 	</dependencies>
+
 
 	<build>
 		<plugins>

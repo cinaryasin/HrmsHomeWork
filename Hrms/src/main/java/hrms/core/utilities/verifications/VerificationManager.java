@@ -8,9 +8,12 @@ import org.springframework.stereotype.Service;
 public class VerificationManager implements VerificationService {
 
 	@Override
-	public void sendVerificationCode(String email) {  //email e göndermeyi simule ediyor.
+	public void sendVerificationCode(String email) {  
+		
+		
+		
 		UUID uuid = UUID.randomUUID();
-		String verificationLink = "https://hrmsverificationmail/" + uuid.toString();
+		uuid.toString();
 		
 	}
 

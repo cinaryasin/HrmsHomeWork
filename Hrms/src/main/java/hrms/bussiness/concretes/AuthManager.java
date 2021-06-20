@@ -25,6 +25,7 @@ import hrms.entities.concretes.VerificationCode;
 import hrms.entities.dtos.EmployerRegisterDto;
 import hrms.entities.dtos.JobCandidateRegisterDto;
 import hrms.entities.dtos.UserForLoginDto;
+import lombok.var;
 
 @Service
 public class AuthManager implements AuthService {
@@ -91,6 +92,7 @@ public class AuthManager implements AuthService {
 		if (result.isSuccess()) {
 
 			this.generateVerificationCode(jobcandidate.getId());
+			return new SuccessResult("Kayıt gerçekleşti");
 
 		}
 		return new ErrorResult(result.getMessage());
@@ -101,6 +103,7 @@ public class AuthManager implements AuthService {
 	public DataResult<User> login(UserForLoginDto userForLoginDto) {
 		var userToCheck = userService.findByEmail(userForLoginDto.getEmail());
 
+		
 		if (userToCheck.getData() == null) {
 			return new ErrorDataResult<>("Giriş yapılamadı");
 		}

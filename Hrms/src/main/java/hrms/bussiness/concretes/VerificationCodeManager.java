@@ -1,5 +1,7 @@
 package hrms.bussiness.concretes;
 
+import java.time.LocalDate;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,8 +25,11 @@ public class VerificationCodeManager implements VerificationCodeService {
 	}
 
 	@Override
-	public Result add(VerificationCode code) {
-		this.verificationCodeDao.save(code);
+	public Result add(VerificationCode verificationCode) {
+		
+		verificationCode.setCreateDate(LocalDate.now());
+		verificationCode.setIsActive(false);
+		this.verificationCodeDao.save(verificationCode);
 		return new SuccessResult("Code added !");
 	}
 

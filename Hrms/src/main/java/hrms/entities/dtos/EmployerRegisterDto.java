@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class EmployerRegisterDto {
 
-	
 	private String webAddress;
     private String phoneNumber;
     private String companyName;

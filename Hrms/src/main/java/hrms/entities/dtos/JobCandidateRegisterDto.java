@@ -17,6 +17,7 @@ public class JobCandidateRegisterDto {
 	private String confirmedPassword;
 	private String firstName;
 	private String lastName;
+
 	private String identificationNo;
 	private LocalDate birthDate;
 	private String phoneNumber;
