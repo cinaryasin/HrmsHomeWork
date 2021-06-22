@@ -1,12 +1,14 @@
 package hrms.entities.concretes;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.*;
-import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.sun.istack.Nullable;
 
 import hrms.core.entities.User;
 import lombok.*;
@@ -39,8 +41,9 @@ public class JobCandidate extends User{
 	@Column(name = "birth_date")
 	private LocalDate birthDate;
 
-	@FutureOrPresent(message="oluşturulma tarihi bugünden önce olamaz")
+	
 	@Column(name = "create_date")
+	@JsonIgnore
 	private LocalDate createDate = LocalDate.now();
 	
 	@Column(name="is_verified_by_email",columnDefinition = "boolean default false")
@@ -48,5 +51,37 @@ public class JobCandidate extends User{
 
 	@Column(name = "search_status")
 	private Boolean searchStatus;
+	
+	@Column(name = "is_active",columnDefinition = "boolean default false")
+	@JsonIgnore
+	private Boolean isActive;
 
+	
+	//bağlantılar
+	
+
+	
+	@JsonIgnore
+	@OneToMany(mappedBy="jobCandidate")
+	private List<JobExperience> jobExperiences;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy="jobCandidate")
+	private List<Language> languages;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy="jobCandidate")
+	private List<SocialNetwork> socialNetworks;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy="jobCandidate")
+	private List<School> schools;
+	
+	
+	@Nullable
+	@JsonIgnore
+	@OneToOne(mappedBy="jobCandidate",optional=true, fetch=FetchType.LAZY)
+	private Image image;
+	
+	
 }

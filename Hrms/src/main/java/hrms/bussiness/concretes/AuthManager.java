@@ -186,6 +186,7 @@ public class AuthManager implements AuthService {
 			JobCandidate jobcandidate = this.jobCandidateService.findById(user_id).getData();
 
 			jobcandidate.setIsEmailVerified(true);
+			jobcandidate.setIsActive(true);
 
 			this.jobCandidateService.update(jobcandidate);
 
@@ -202,6 +203,7 @@ public class AuthManager implements AuthService {
 			Employer employer = this.employerService.findById(user_id).getData();
 
 			employer.setIsEmailVerified(true);
+			employer.setIsActive(true);
 
 			this.employerService.update(employer);
 

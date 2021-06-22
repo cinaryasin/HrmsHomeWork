@@ -4,6 +4,8 @@ import java.time.LocalDate;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import hrms.core.entities.User;
 import lombok.*;
 
@@ -22,9 +24,11 @@ public class Employee extends User {
 	private String lastName;
 
 	@Column(name = "create_date")
+	@JsonIgnore
 	private LocalDate createDate = LocalDate.now();
 
 	@Column(name = "is_active")
+	@JsonIgnore
 	private Boolean isActive;
 
 //	@OneToMany(cascade = CascadeType.ALL)

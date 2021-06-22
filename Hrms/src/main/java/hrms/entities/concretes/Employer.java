@@ -33,6 +33,7 @@ public class Employer extends User{
 	private String phoneNumber;
 
 	@Column(name = "create_date")
+	@JsonIgnore
 	private LocalDate createDate;
 
 	@Column(name = "search_status")
@@ -46,5 +47,9 @@ public class Employer extends User{
 	@JsonIgnore
     @Column(name="is_verified_by_emlopyee",columnDefinition = "boolean default false")
 	private Boolean isVerifiedByEmlopyee;
+	
+	@Column(name = "is_active",columnDefinition = "boolean default false")
+	@JsonIgnore
+	private Boolean isActive;
 	
 }

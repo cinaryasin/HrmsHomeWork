@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -54,9 +55,11 @@ public class JobAdvertisement {
 	private LocalDate endApplicationDate;
 	
 	@Column(name = "create_date")
+	@JsonIgnore
 	private LocalDate createDate = LocalDate.now();
 	
 	@Column(name = "is_active")
+	@JsonIgnore
 	private Boolean isActive;
 
 }
