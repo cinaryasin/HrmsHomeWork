@@ -56,6 +56,7 @@ public class Language {
   //bağlantılar
 	
   		@ManyToOne()
+  		@JsonIgnore
   		@JoinColumn(name="job_candidate_id")
   		private JobCandidate jobCandidate;
 

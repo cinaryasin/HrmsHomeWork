@@ -9,6 +9,6 @@ import hrms.entities.concretes.School;
 
 public interface SchoolDao extends JpaRepository<School, Integer> {
 
-	School findById(int id);
+	
 	List<School> findAllByJobCandidateId(int jobCandidateId);
 }

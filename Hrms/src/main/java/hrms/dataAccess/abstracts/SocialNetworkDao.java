@@ -8,6 +8,6 @@ import hrms.entities.concretes.SocialNetwork;
 
 public interface SocialNetworkDao extends JpaRepository<SocialNetwork,Integer>{
 
-	SocialNetwork findById(int id);
+	
 	List<SocialNetwork> findAllByJobCandidateId(int jobCandidateId);
 }

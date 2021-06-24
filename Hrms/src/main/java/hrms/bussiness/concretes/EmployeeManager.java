@@ -47,7 +47,7 @@ public class EmployeeManager implements EmployeeService{
 
 	@Override
 	public DataResult<Employee> findById(int userId) {
-		var result = employeeDao.findById(userId);
+		var result = employeeDao.findById(userId).get();
 		if (result==null) {
 			return new ErrorDataResult<>("Sistem çalışanı bulunamadı");
 		}

@@ -8,7 +8,10 @@ import org.springframework.stereotype.Service;
 import hrms.bussiness.abstracts.JobExperienceService;
 import hrms.bussiness.abstracts.LanguageService;
 import hrms.core.results.DataResult;
+import hrms.core.results.ErrorDataResult;
 import hrms.core.results.Result;
+import hrms.core.results.SuccessDataResult;
+import hrms.core.results.SuccessResult;
 import hrms.dataAccess.abstracts.JobExperienceDao;
 import hrms.dataAccess.abstracts.LanguageDao;
 import hrms.entities.concretes.Language;
@@ -25,25 +28,31 @@ public class LanguageManager implements LanguageService {
 
 	@Override
 	public Result add(Language language) {
-		// TODO Auto-generated method stub
-		return null;
+		languageDao.save(language);
+		return new SuccessResult("Eklendi");
 	}
 
 	@Override
 	public Result update(Language language) {
-		// TODO Auto-generated method stub
-		return null;
+		languageDao.save(language);
+		return new SuccessResult("Güncellendi");
 	}
 
 	@Override
 	public DataResult<Language> findById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		var result = languageDao.findById(id).get();
+		if (result == null) {
+			return new ErrorDataResult<>("bulunamadı");
+		}
+		return new SuccessDataResult<>(result,"Getirildi");
 	}
 
 	@Override
 	public DataResult<List<Language>> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		var result = languageDao.findAll();
+		if (result == null) {
+			return new ErrorDataResult<>("bulunamadı");
+		}
+		return new SuccessDataResult<>(result,"Getirildi");
 	}
 }
