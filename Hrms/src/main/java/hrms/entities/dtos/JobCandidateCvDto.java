@@ -2,6 +2,8 @@ package hrms.entities.dtos;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import hrms.entities.concretes.Image;
 import hrms.entities.concretes.JobCandidate;
 import hrms.entities.concretes.JobExperience;
@@ -11,15 +13,17 @@ import hrms.entities.concretes.SocialNetwork;
 
 public class JobCandidateCvDto {
 
+	@JsonIgnore
 	public JobCandidate jobCandidate;
 	
-	public List<School> schools;
+	public School schools;
 	
-	public List<SocialNetwork> socialNetworks;
+	public SocialNetwork socialNetworks;
 	
-	public List<Language> languages;
+	public Language languages;
 	
-	public List<JobExperience> jobExperiences;
-		
+	public JobExperience jobExperiences;
+
+	@JsonIgnore
 	public Image image;
 }
